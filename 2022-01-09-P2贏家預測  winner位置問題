@@ -8,9 +8,9 @@ int main()
     cin>>n>>m;
     vector<ll> s(n+1), t(n+1);
     vector<int> id(n), n_lose(n+1);
-    vector<int> winner, loser;  //要放在  while(id.size()>1)下面  
-    for(int i=1; i<=n; i++)       //  每次重置  winner
-        cin>>s[i];                //  不然配合clear還是測資10 TLE
+    vector<int> winner, loser;  //放在  while(id.size()>1)下面  
+    for(int i=1; i<=n; i++)       //每次重置winner, loser  就不用clear
+        cin>>s[i];               
     for(int i=1; i<=n; i++)
         cin>>t[i];
     for(int i=0; i<n; i++)
@@ -34,8 +34,9 @@ int main()
         if (id.size() %2 ==1)
             winner.push_back( id[ id.size()-1 ] );
         id.swap(winner);
-        winner.clear();
         id.insert( id.end(), loser.begin(), loser.end() );
+        winner.clear();         // 每輪比完  重置winner, loser 
+        loser.clear();         //  
     }
     cout << id[0] << endl;
     return 0;
