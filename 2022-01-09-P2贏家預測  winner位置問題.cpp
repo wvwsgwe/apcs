@@ -1,3 +1,5 @@
+//2022-01-09-P2贏家預測  winner位置問題.cpp
+//AC (4ms, 368KB)
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
@@ -17,6 +19,7 @@ int main()
         cin>>id[i];
     while(id.size()>1)
     {
+        //  vector<int> winner, loser;  放這  不用clear  少1ms   AC (4ms, 376KB)
         for(int i=0; i+2<=id.size(); i+=2)
         {
             int win=id[i], lose=id[i+1];
@@ -32,11 +35,11 @@ int main()
                 loser.push_back(lose);
         }
         if (id.size() %2 ==1)
-            winner.push_back( id[ id.size()-1 ] );
-        id.swap(winner);
+            winner.push_back( id[ id.size()-1 ] );  //改winner.push_back( id.back() )  
+        id.swap(winner);                              //AC (3ms, 352KB)  快1ms
         id.insert( id.end(), loser.begin(), loser.end() );
         winner.clear();         // 每輪比完  重置winner, loser 
-        loser.clear();         //  
+        loser.clear();         //  沒重置會TLE  或其他錯誤
     }
     cout << id[0] << endl;
     return 0;
