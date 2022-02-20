@@ -17,7 +17,7 @@ int main()
         cin>>t[i];
     for(int i=0; i<n; i++)
         cin>>id[i];
-    while(id.size()>1)
+    while(id.size()>1)           //
     {
         //  vector<int> winner, loser;  放這  不用clear  少1ms   AC (4ms, 376KB)
         for(int i=0; i+2<=id.size(); i+=2)
