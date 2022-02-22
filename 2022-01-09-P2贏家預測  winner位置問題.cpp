@@ -20,7 +20,7 @@ int main()
     while(id.size()>1)           //
     {
         //  vector<int> winner, loser;  放這  不用clear  少1ms   AC (4ms, 376KB)
-        for(int i=0; i+2<=id.size(); i+=2)
+        for(int i=0; i+2<=id.size(); i+=2)  //也可用  i+1 < id.size()
         {
             int win=id[i], lose=id[i+1];
             if (s[win]*t[win] < s[lose]*t[lose])
